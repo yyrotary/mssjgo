@@ -13,8 +13,8 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Handle Admin routes
-  if (pathname.startsWith('/admin')) {
+  // Handle Admin routes and Admin-only tools
+  if (pathname.startsWith('/admin') || pathname.startsWith('/scraper')) {
     if (pathname === '/admin/login') {
       return NextResponse.next();
     }
