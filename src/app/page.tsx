@@ -17,7 +17,7 @@ export default async function Home() {
 
           <div className="space-y-4 relative z-10">
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-neutral-200 to-neutral-600 pb-2">
-              심재고 <span className="text-3xl md:text-5xl text-neutral-600 font-serif tracking-normal ml-2 font-medium">(心齋庫)</span>
+              심재고 <span className="text-3xl md:text-5xl text-neutral-600 font-serif tracking-normal ml-2 font-medium">(深齋庫)</span>
             </h1>
             <p className="text-xl md:text-2xl text-blue-400 font-medium italic tracking-wide drop-shadow-sm">
               "비워냄으로써 더 큰 지혜를 채우는 우리만의 은밀한 AI 공작소"
@@ -35,9 +35,9 @@ export default async function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto mt-12 relative z-10 text-left pt-6 border-t border-white/5">
             <div className="bg-neutral-900/50 backdrop-blur-sm border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition-colors group">
-              <h3 className="text-xl font-bold text-white mb-2 font-serif tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 group-hover:scale-[1.02] transition-transform origin-left">심재 (心齋)</h3>
+              <h3 className="text-xl font-bold text-white mb-2 font-serif tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 group-hover:scale-[1.02] transition-transform origin-left">심재 (深齋)</h3>
               <p className="text-sm text-neutral-400 leading-relaxed">
-                장자(莊子)의 철학에서 유래한 말로, <span className="text-neutral-300 font-semibold">'마음을 비우고 고요하게 하여 사물의 참모습을 꿰뚫어 보는 상태'</span>를 뜻합니다.
+                <span className="text-neutral-300 font-semibold">'깊이 집중하고 고요하게 하여 사물의 참모습을 꿰뚫어 보는 상태'</span>를 뜻합니다.
               </p>
             </div>
             <div className="bg-neutral-900/50 backdrop-blur-sm border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition-colors group">
