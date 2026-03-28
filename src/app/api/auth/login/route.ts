@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
+import { getSetting } from "@/app/actions/settingsActions";
 
 export async function POST(request: Request) {
   try {
     const { password } = await request.json();
-    const correctPassword = process.env.SITE_PASSWORD || "1234";
+    const correctPassword = await getSetting("site_password", process.env.SITE_PASSWORD || "1234");
 
     if (password === correctPassword) {
       const response = NextResponse.json({ success: true });

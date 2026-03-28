@@ -2,11 +2,31 @@
 
 import { useState, useTransition } from "react";
 import { approvePrompt, deletePrompt } from "@/app/actions/promptActions";
+import { updateSetting } from "@/app/actions/settingsActions";
 import { CheckCircle, Trash2, Loader2, Link as LinkIcon, Lock } from "lucide-react";
 
 export default function AdminDashboardClient({ initialPrompts }: { initialPrompts: any[] }) {
     const [prompts, setPrompts] = useState(initialPrompts);
     const [isPending, startTransition] = useTransition();
+    
+    // Settings State
+    const [sitePassword, setSitePassword] = useState("");
+    const [adminPassword, setAdminPassword] = useState("");
+    const [isSavingSettings, startSavingSettings] = useTransition();
+
+    const handleUpdatePassword = (type: "site_password" | "admin_password", value: string) => {
+        if (!value.trim()) return alert("비밀번호를 입력해주세요.");
+        if (!confirm("정말 비밀번호를 변경하시겠습니까?")) return;
+        startSavingSettings(async () => {
+            const res = await updateSetting(type, value);
+            if (res.error) alert(res.error);
+            else {
+                alert("비밀번호가 성공적으로 변경되었습니다.");
+                if (type === "site_password") setSitePassword("");
+                if (type === "admin_password") setAdminPassword("");
+            }
+        });
+    };
 
     const handleApprove = (id: string) => {
         startTransition(async () => {
@@ -119,6 +139,58 @@ export default function AdminDashboardClient({ initialPrompts }: { initialPrompt
                     </h2>
                 </div>
                 {renderList(approvedPrompts, false)}
+            </section>
+
+            <section>
+                <div className="flex items-center gap-3 mb-6 border-t border-white/10 pt-12">
+                    <h2 className="text-xl font-bold text-neutral-400 flex items-center gap-2">
+                        <Lock className="w-5 h-5 text-blue-500" />
+                        보안 / 비밀번호 설정
+                    </h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-6 bg-neutral-900/50 border border-white/10 rounded-xl">
+                        <h3 className="text-lg font-bold text-white mb-2">일반 사용자 비밀번호</h3>
+                        <p className="text-sm text-neutral-400 mb-4">메인 갤러리 접근 시 필요한 비밀번호입니다.</p>
+                        <div className="flex gap-2">
+                            <input
+                                type="text"
+                                value={sitePassword}
+                                onChange={e => setSitePassword(e.target.value)}
+                                placeholder="새 비밀번호 입력"
+                                className="flex-1 bg-black border border-white/10 rounded-lg px-4 py-2 text-white outline-none focus:border-blue-500 transition-colors"
+                            />
+                            <button
+                                disabled={isSavingSettings}
+                                onClick={() => handleUpdatePassword("site_password", sitePassword)}
+                                className="px-4 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 disabled:opacity-50 transition-colors"
+                            >
+                                변경
+                            </button>
+                        </div>
+                    </div>
+                    <div className="p-6 bg-neutral-900/50 border border-white/10 rounded-xl relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-orange-500"></div>
+                        <h3 className="text-lg font-bold text-white mb-2 mt-1">관리자 비밀번호</h3>
+                        <p className="text-sm text-neutral-400 mb-4">현재 관리자 대시보드 접근 시 필요한 비밀번호입니다.</p>
+                        <div className="flex gap-2">
+                            <input
+                                type="text"
+                                value={adminPassword}
+                                onChange={e => setAdminPassword(e.target.value)}
+                                placeholder="새 비밀번호 입력"
+                                className="flex-1 bg-black border border-red-500/20 rounded-lg px-4 py-2 text-white outline-none focus:border-red-500 transition-colors"
+                            />
+                            <button
+                                disabled={isSavingSettings}
+                                onClick={() => handleUpdatePassword("admin_password", adminPassword)}
+                                className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg hover:bg-red-500 disabled:opacity-50 transition-colors"
+                            >
+                                변경
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     );
