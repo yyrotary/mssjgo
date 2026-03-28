@@ -3,11 +3,13 @@
 import { useState, useTransition } from "react";
 import { approvePrompt, deletePrompt } from "@/app/actions/promptActions";
 import { updateSetting } from "@/app/actions/settingsActions";
-import { CheckCircle, Trash2, Loader2, Link as LinkIcon, Lock } from "lucide-react";
+import { CheckCircle, Trash2, Edit2, Loader2, Link as LinkIcon, Lock } from "lucide-react";
+import AdminEditModal from "@/components/AdminEditModal";
 
 export default function AdminDashboardClient({ initialPrompts }: { initialPrompts: any[] }) {
     const [prompts, setPrompts] = useState(initialPrompts);
     const [isPending, startTransition] = useTransition();
+    const [editingPrompt, setEditingPrompt] = useState<any | null>(null);
     
     // Settings State
     const [sitePassword, setSitePassword] = useState("");
@@ -73,7 +75,7 @@ export default function AdminDashboardClient({ initialPrompts }: { initialPrompt
                         <div key={prompt.id} className="flex flex-col md:flex-row gap-4 p-5 bg-neutral-900/50 border border-white/10 rounded-xl hover:bg-neutral-900 transition-colors">
                             <div className="w-24 h-24 shrink-0 bg-black rounded-lg overflow-hidden border border-white/5 flex items-center justify-center">
                                 {prompt.image_url ? (
-                                    <img src={prompt.image_url} alt={prompt.name} className="w-full h-full object-cover opacity-80" />
+                                    <img src={prompt.image_url} alt={prompt.name} loading="lazy" className="w-full h-full object-cover opacity-80" />
                                 ) : (
                                     <span className="text-xs text-neutral-600">No Img</span>
                                 )}
@@ -101,6 +103,14 @@ export default function AdminDashboardClient({ initialPrompts }: { initialPrompt
                                         className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-white rounded-lg font-bold text-sm transition-colors"
                                     >
                                         <CheckCircle className="w-4 h-4" /> 승인
+                                    </button>
+                                )}
+                                {!isOfficial && (
+                                    <button 
+                                        onClick={() => setEditingPrompt(prompt)}
+                                        className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-blue-500/10 text-blue-500 hover:bg-blue-500 hover:text-white rounded-lg font-bold text-sm transition-colors"
+                                    >
+                                        <Edit2 className="w-4 h-4" /> 수정
                                     </button>
                                 )}
                                 {!isOfficial && (
@@ -192,6 +202,15 @@ export default function AdminDashboardClient({ initialPrompts }: { initialPrompt
                     </div>
                 </div>
             </section>
+            
+            <AdminEditModal 
+                prompt={editingPrompt} 
+                isOpen={!!editingPrompt} 
+                onClose={() => setEditingPrompt(null)} 
+                onSuccess={(updated) => {
+                    setPrompts(prev => prev.map(p => p.id === updated.id ? updated : p));
+                }} 
+            />
         </div>
     );
 }
