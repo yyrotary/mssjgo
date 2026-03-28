@@ -1,0 +1,50 @@
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        })(window, document, 'script', 'dataLayer', 'GTM-MR6R936H');</script>
+        content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms https://www.google-analytics.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://platform.twitter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://c.clarity.ms https://c.bing.com https://pbs.twimg.com https://abs.twimg.com https://*.twimg.com https://www.googletagmanager.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://c.clarity.ms https://b.clarity.ms https://c.bing.com; frame-src https://platform.twitter.com;">
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        .banana-prompt-cta {
+        .banana-prompt-cta:hover {
+        .banana-prompt-cta__icon {
+        .banana-prompt-cta__text {
+        .banana-prompt-cta__text strong {
+        .banana-prompt-cta__text small {
+            .banana-prompt-cta {
+      "description": "Infographic prompt pattern gallery.",
+                class="support-link" onclick="dataLayer.push({'event': 'support_bot_click', 'site': 'evaluation'});">💬
+                지원 <i data-lucide="external-link" style="width:14px;height:14px;margin-left:4px;opacity:0.6;"></i></a>
+            <i data-lucide="search" style="width:16px;height:16px;"></i>
+                <i data-lucide="award" style="width:18px;height:18px;"></i>
+            <button onclick="closeBadgesPanel()"><i data-lucide="x" style="width:16px;height:16px;"></i></button>
+                <div class="x-action-icon x-repost"><i data-lucide="repeat-2"></i></div>
+                <div class="x-action-icon x-like"><i data-lucide="heart"></i></div>
+                <div class="x-action-icon x-bookmark"><i data-lucide="bookmark"></i></div>
+            <div class="x-pointer"><i data-lucide="chevron-down"></i></div>
+                            nameAttr: 'data-lucide'
+                onclick="dataLayer.push({'event': 'notebooklm_ext_click', 'click_target': 'notebooklm_url_collector'});">
+                            data-lucide="github"></i>GITHUB</a></li>
+                <li><a href="https://x.com/furoku" target="_blank" class="footer-link"><i data-lucide="twitter"></i>X
+                            data-lucide="book-open"></i>NOTE（利用の約束）</a></li>
+                    <li><a href="../../dena_100/" class="footer-link"><i data-lucide="grid"></i>AI 활용 사례 갤러리</a></li>
+                    <li><a href="../../banana-prompt/" class="footer-link"><i data-lucide="lightbulb"></i>AI 활용 프롬프트
+                    <li><a href="../../infographic-olympic/" class="footer-link"><i data-lucide="trophy"></i>동계 올림픽</a>
+        <button class="close-btn" onclick="closeM()"><i data-lucide="x"></i></button>
+                <a href="https://furoku.github.io/bananaX/projects/banana-prompt/" class="banana-prompt-cta"
+                    id="banana-prompt-link">
+                    <span class="banana-prompt-cta__icon">🍌</span>
+                    <span class="banana-prompt-cta__text">
+                    <i data-lucide="arrow-right" style="width:18px;height:18px;flex-shrink:0;"></i>
+                                        data-lucide="copy" style="width:12px;height:12px;"></i><span
+                                        data-lucide="building-2" style="width:12px;height:12px;"></i><span
+                                    title="즐겨찾기"><i data-lucide="heart" style="width:12px;height:12px;"></i><span
+                    bannerId: 'support_bananaprompt_square',
+                    href: 'https://furoku.github.io/bananaX/projects/banana-prompt/'
+                el.dataset.slotName = cfg.slotName;
+                el.dataset.bannerId = cfg.bannerId;
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+        let data = [];
+                detailDataPromise = fetch('evaluation_data.json?v=1.2.3')
+            const lite = data.find(x => x.id === id);
+        // Load style ranking AND main data in parallel, render only when both settle
+        const dataPromise = fetch('evaluation_lite.json?v=1.0.0')
