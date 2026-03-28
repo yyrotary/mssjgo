@@ -103,6 +103,7 @@ export default function AdminEditModal({
                             {/* Image Edit */}
                             <div className="space-y-2">
                                 <label className="block text-sm font-medium text-neutral-400">대표 이미지</label>
+                                <input id="admin-image-upload" type="file" name="image" accept="image/*" className="hidden" onChange={handleImageChange} />
                                 <div className="border border-white/10 rounded-lg p-4 bg-black/50 relative min-h-[150px] flex items-center justify-center">
                                     {imagePreview || (!removeImage && prompt.image_url) ? (
                                         <>
@@ -111,17 +112,15 @@ export default function AdminEditModal({
                                                 alt="Preview"
                                                 className="absolute inset-0 w-full h-full object-contain p-2 opacity-60"
                                             />
-                                            <label className="z-10 cursor-pointer flex flex-col items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md rounded-lg hover:bg-black/80 transition-colors border border-white/10">
+                                            <label htmlFor="admin-image-upload" className="z-10 cursor-pointer flex flex-col items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md rounded-lg hover:bg-black/80 transition-colors border border-white/10">
                                                 <Upload className="w-5 h-5 text-white" />
                                                 <span className="text-sm font-bold text-white tracking-wide">이미지 변경</span>
-                                                <input type="file" name="image" accept="image/*" className="hidden" onChange={handleImageChange} />
                                             </label>
                                         </>
                                     ) : (
-                                        <label className="cursor-pointer flex flex-col items-center text-neutral-500 hover:text-white transition-colors">
+                                        <label htmlFor="admin-image-upload" className="cursor-pointer flex flex-col items-center text-neutral-500 hover:text-white transition-colors">
                                             <Upload className="w-8 h-8 mb-2" />
                                             <span className="text-sm">새 이미지 업로드</span>
-                                            <input type="file" name="image" accept="image/*" className="hidden" onChange={handleImageChange} />
                                         </label>
                                     )}
                                     {(imagePreview || prompt.image_url) && !removeImage && (
@@ -139,6 +138,7 @@ export default function AdminEditModal({
                             {/* Audio Edit */}
                             <div className="space-y-2">
                                 <label className="block text-sm font-medium text-neutral-400">오디오 / 음악 파일</label>
+                                <input id="admin-audio-upload" type="file" name="audio" accept="audio/*" className="hidden" onChange={handleAudioChange} />
                                 <div className="border border-white/10 rounded-lg p-4 bg-black/50 relative min-h-[150px] flex flex-col items-center justify-center text-center">
                                     {(audioFileName || (!removeAudio && prompt.metadata?.audio_url)) ? (
                                         <>
@@ -146,9 +146,8 @@ export default function AdminEditModal({
                                             <span className="text-xs text-neutral-300 break-all px-2 max-w-[200px] mb-4">
                                                 {audioFileName || "기존 오디오 유지됨"}
                                             </span>
-                                            <label className="cursor-pointer px-4 py-2 bg-black/60 backdrop-blur-md rounded-lg hover:bg-black/80 transition-colors border border-white/10">
+                                            <label htmlFor="admin-audio-upload" className="cursor-pointer px-4 py-2 bg-black/60 backdrop-blur-md rounded-lg hover:bg-black/80 transition-colors border border-white/10">
                                                 <span className="text-sm font-bold text-white tracking-wide">오디오 변경</span>
-                                                <input type="file" name="audio" accept="audio/*" className="hidden" onChange={handleAudioChange} />
                                             </label>
                                             <button
                                                 type="button"
@@ -159,10 +158,9 @@ export default function AdminEditModal({
                                             </button>
                                         </>
                                     ) : (
-                                        <label className="cursor-pointer flex flex-col items-center text-neutral-500 hover:text-white transition-colors">
+                                        <label htmlFor="admin-audio-upload" className="cursor-pointer flex flex-col items-center text-neutral-500 hover:text-white transition-colors">
                                             <Upload className="w-8 h-8 mb-2" />
                                             <span className="text-sm">새 오디오 업로드</span>
-                                            <input type="file" name="audio" accept="audio/*" className="hidden" onChange={handleAudioChange} />
                                         </label>
                                     )}
                                 </div>
