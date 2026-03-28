@@ -72,6 +72,7 @@ export async function addPrompt(formData: FormData) {
         prompt_text,
         type,
         image_url,
+        is_approved: false,
         metadata: { source: "user", audio_url }
     });
 
@@ -201,5 +202,15 @@ export async function ratePrompt(id: string, rating: number) {
     }
 
     revalidatePath("/");
+    return { success: true };
+}
+
+export async function approvePrompt(id: string) {
+    const { error } = await supabase.from("prompts").update({ is_approved: true }).eq("id", id);
+    if (error) {
+        return { error: `Approval failed: ${error.message}` };
+    }
+    revalidatePath("/");
+    revalidatePath("/admin");
     return { success: true };
 }

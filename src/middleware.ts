@@ -4,19 +4,33 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
-  // Exclude login page, auth API route, and purely static files/assets
+  // Exclude static assets and auth API routes entirely
   if (
     pathname.startsWith('/_next') ||
     pathname.includes('.') ||
-    pathname === '/login' ||
-    pathname === '/api/auth/login'
+    pathname.startsWith('/api/auth')
   ) {
     return NextResponse.next();
   }
 
-  const authCookie = request.cookies.get('site-auth');
+  // Handle Admin routes
+  if (pathname.startsWith('/admin')) {
+    if (pathname === '/admin/login') {
+      return NextResponse.next();
+    }
+    const adminAuthCookie = request.cookies.get('admin-auth');
+    if (!adminAuthCookie || adminAuthCookie.value !== 'true') {
+      return NextResponse.redirect(new URL('/admin/login', request.url));
+    }
+    return NextResponse.next();
+  }
 
-  if (!authCookie || authCookie.value !== 'true') {
+  // Handle User routes
+  if (pathname === '/login') {
+    return NextResponse.next();
+  }
+  const siteAuthCookie = request.cookies.get('site-auth');
+  if (!siteAuthCookie || siteAuthCookie.value !== 'true') {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 

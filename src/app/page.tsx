@@ -7,6 +7,7 @@ export default async function Home() {
   const { data: prompts } = await supabase
     .from("prompts")
     .select("*")
+    .eq("is_approved", true)
     .order("created_at", { ascending: false });
 
   return (
